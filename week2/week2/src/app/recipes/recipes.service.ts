@@ -36,13 +36,9 @@ export class RecipesService {
   }
 
   deleteRecipe(recipeId: string) {
-    var find_recipe = this.recipes.find(r => r.id == recipeId);
-    var idx = this.recipes.indexOf(find_recipe);
-
-    if (idx !== -1) {
-      return this.recipes.splice(idx, 1);
-    }
-
+    this.recipes = this.recipes.filter(recipe => {
+      return recipe.id !== recipeId;
+    });
   }
 
 

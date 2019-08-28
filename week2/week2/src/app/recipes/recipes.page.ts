@@ -10,17 +10,6 @@ import { AlertController } from '@ionic/angular';
 })
 export class RecipesPage implements OnInit {
 
-
-
-  // recipes: Recipe[] = [
-  //   {
-  //     id: 'r1',
-  //     title: 'Gado-gado',
-  //     imageUrl: 'https://www.bbcgoodfood.com/sites/default/files/recipe/recipe-image/2016/05/gado-gado-salad.jpg',
-  //     ingredients: ['Lontong', 'Sawi', 'Bumbu Kecap', 'Tauge']
-  //   }
-  // ];
-
   recipes: Recipe[];
   constructor(private recipesService: RecipesService) { }
 

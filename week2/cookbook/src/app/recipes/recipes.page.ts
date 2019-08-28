@@ -21,10 +21,7 @@ export class RecipesPage implements OnInit {
     console.log(this.recipesService.getRecipe(recipeId));
   }
 
-  hapus(recipeId) {
-    this.recipesService.deleteRecipe(recipeId);
-    alert("Object dengan ID: " + recipeId + " berhasil dihapus di console!");
-    console.log("Resep dengan ID: " + recipeId + "dihapus");
+  ionViewWillEnter() {
+    this.recipes = this.recipesService.getAllRecipes();
   }
-
 }

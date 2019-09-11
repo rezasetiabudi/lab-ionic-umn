@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Place } from 'src/app/places/place.model';
-import { ModalController } from '@ionic/angular';
+import { ModalController, LoadingController } from '@ionic/angular';
 
 @Component({
   selector: 'app-create-booking',
@@ -11,7 +11,8 @@ export class CreateBookingComponent implements OnInit {
   @Input() selectedPlace: Place;
 
   constructor(
-    private modalCtrl: ModalController
+    private modalCtrl: ModalController,
+    private loadingCtrl: LoadingController
   ) { }
 
   ngOnInit() {}
@@ -21,7 +22,17 @@ export class CreateBookingComponent implements OnInit {
   }
 
   onBookPlace() {
-    this.modalCtrl.dismiss({message: 'this is a dummy message!'}, 'confirm');
+    this.loadingCtrl.create({
+      keyboardClose: true,
+      message: 'Booking the place...'
+    })
+    .then(loadingEl => {
+      loadingEl.present();
+      setTimeout(() => {
+        loadingEl.dismiss();
+        this.modalCtrl.dismiss({ message: 'booked!' }, 'confirm');
+      }, 2000);
+    });
   }
 
 }

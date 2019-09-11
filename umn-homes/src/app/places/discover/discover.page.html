@@ -2,7 +2,7 @@
   <ion-toolbar>
     <ion-title>Discover Places</ion-title>
     <ion-buttons slot="start">
-      <ion-button (click)="onOpenMenu()"><ion-icon name="menu"></ion-icon></ion-button>
+        <ion-menu-button menu="m1"></ion-menu-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
@@ -27,13 +27,7 @@
                   fill="clear"
                   color="primary"
                   routerDirection="forward"
-                  [routerLink]="[
-                    '/',
-                    'places',
-                    'tabs',
-                    'discover',
-                    'loadedPlaces[0].id'
-                  ]">More</ion-button>
+                  [routerLink]="['/', 'places', 'tabs', 'discover', loadedPlaces[0].id]">More</ion-button>
               </div>
 
             </ion-card>

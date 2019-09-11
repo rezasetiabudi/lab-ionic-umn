@@ -10,14 +10,14 @@ import { PlacesService } from '../places.service';
 })
 export class OffersPage implements OnInit {
 
-  loadedPlaces: Place[];
+  offers: Place[];
   constructor(
     private menuCtrl: MenuController,
     private placesService: PlacesService
   ) { }
 
   ngOnInit() {
-    this.loadedPlaces = this.placesService.getPlaces();
+    this.offers = this.placesService.getPlaces();
   }
 
   onOpenMenu(){

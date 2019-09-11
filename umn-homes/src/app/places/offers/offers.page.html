@@ -1,8 +1,13 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>offers</ion-title>
+    <ion-title>My Offers</ion-title>
     <ion-buttons slot="start">
-      <ion-button (click)="onOpenMenu()"><ion-icon name="menu"></ion-icon></ion-button>
+      <ion-menu-button menu="m1"></ion-menu-button>
+    </ion-buttons>
+    <ion-buttons slot="primary">
+      <ion-button (click)="onClick()">
+        <ion-icon slot="icon-only" name="add"></ion-icon>
+      </ion-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
@@ -13,13 +18,12 @@
       
       <ion-col size="12" size-sm="8" offset-sm="2" text-center>
         <ion-list>
-          <ion-item *ngFor="let p of loadedPlaces.slice(1)" [routerLink]="['/', 'places', 'tabs', 'offers', p.id]">
+          <ion-item *ngFor="let offer of offers" [routerLink]="['/', 'places', 'tabs', 'offers', offer.id]">
             <ion-thumbnail slot="start">
-              <img [src]="p.imgUrl" />
+              <img [src]="offer.imgUrl" />
             </ion-thumbnail>
             <ion-label>
-              <h2>{{ p.title }}</h2>
-              <p>{{ p.description }}</p>
+              <h3>{{ offer.title }}</h3>
             </ion-label>
           </ion-item>
         </ion-list>

@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Place } from 'src/app/places/place.model';
-import { ModalController, LoadingController } from '@ionic/angular';
+import { ModalController, LoadingController, ActionSheetController } from '@ionic/angular';
 
 @Component({
   selector: 'app-create-booking',
@@ -12,7 +12,8 @@ export class CreateBookingComponent implements OnInit {
 
   constructor(
     private modalCtrl: ModalController,
-    private loadingCtrl: LoadingController
+    private loadingCtrl: LoadingController,
+    private actionSheetController: ActionSheetController,
   ) { }
 
   ngOnInit() {}
@@ -21,18 +22,53 @@ export class CreateBookingComponent implements OnInit {
     this.modalCtrl.dismiss(null, 'cancel');
   }
 
-  onBookPlace() {
-    this.loadingCtrl.create({
-      keyboardClose: true,
-      message: 'Booking the place...'
-    })
-    .then(loadingEl => {
-      loadingEl.present();
-      setTimeout(() => {
-        loadingEl.dismiss();
-        this.modalCtrl.dismiss({ message: 'booked!' }, 'confirm');
-      }, 2000);
-    });
-  }
+  // onBookPlace() {
+    
+  // }
 
+  async onBookPlace () {
+    const actionSheet = await this.actionSheetController.create({
+      header: 'Book Place',
+      buttons: [{
+        text: 'Book w/ Random Date',
+        handler: () => {
+          this.modalCtrl.create({
+            component: CreateBookingComponent,
+            componentProps: {
+              selectedPlace: this.selectedPlace
+            }
+          })
+          .then(modalElement =>{
+            modalElement.present();
+            return modalElement.onDidDismiss();
+          })
+          .then(resultData => {
+            console.log(resultData);
+          });
+
+          this.loadingCtrl.create({
+            keyboardClose: true,
+            message: 'Booking the place...'
+          })
+          .then(loadingEl => {
+            loadingEl.present();
+            setTimeout(() => {
+              loadingEl.dismiss();
+              this.modalCtrl.dismiss({ message: 'booked!' }, 'confirm');
+            }, 2000);
+          });
+
+          this.modalCtrl.dismiss();
+        }
+      }, {
+        text: 'Cancel',
+        role: 'cancel',
+        handler: () => {
+          console.log('Cancel clicked');
+        }
+      }]
+    });
+  
+    await actionSheet.present();
+  }
 }

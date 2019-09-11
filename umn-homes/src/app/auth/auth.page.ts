@@ -10,12 +10,15 @@ import { Router } from '@angular/router';
 })
 export class AuthPage implements OnInit {
 
+  imgUrl;
   constructor(
     private authService: AuthService,
     private router: Router
-  ) { }
+    ) { }
 
   ngOnInit() {
+    this.imgUrl = "https://cdn.dribbble.com/users/79571/screenshots/4407347/swingvy_all_illustrations.png"
+    console.log(this.imgUrl);
   }
 
   onLogin(){

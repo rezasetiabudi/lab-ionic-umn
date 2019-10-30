@@ -6,6 +6,10 @@ import { Routes, RouterModule } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
 
 import { PlaceDetailPage } from './place-detail.page';
+<<<<<<< HEAD
+=======
+import { CreateBookingComponent } from 'src/app/bookings/create-booking/create-booking.component';
+>>>>>>> week10
 
 const routes: Routes = [
   {
@@ -21,6 +25,11 @@ const routes: Routes = [
     IonicModule,
     RouterModule.forChild(routes)
   ],
+<<<<<<< HEAD
   declarations: [PlaceDetailPage]
+=======
+  declarations: [PlaceDetailPage, CreateBookingComponent],
+  entryComponents: [CreateBookingComponent]
+>>>>>>> week10
 })
 export class PlaceDetailPageModule {}

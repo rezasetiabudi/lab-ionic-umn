@@ -4,6 +4,7 @@ import { Place } from './place.model';
 @Injectable({
   providedIn: 'root'
 })
+
 export class PlacesService {
   private places: Place[] = [
     new Place(
@@ -40,6 +41,10 @@ export class PlacesService {
 
   getPlaces() {
     return [...this.places];
+  }
+
+  getPlace(id: String){
+    return {...this.places.find(p => p.id === id)}
   }
 
 

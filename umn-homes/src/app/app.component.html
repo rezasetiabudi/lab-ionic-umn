@@ -8,6 +8,7 @@
         <ion-content>
           <ion-list>
 
+<<<<<<< HEAD
             <ion-item line="none">
               <ion-icon name="business" slot="start"></ion-icon>
               <ion-label>Discover Places</ion-label>
@@ -23,6 +24,29 @@
               <ion-label>Logout</ion-label>
             </ion-item>
 
+=======
+            <ion-menu-toggle>
+              <ion-item line="none" routerLink="/places/tabs/discover">
+                <ion-icon name="business" slot="start"></ion-icon>
+                <ion-label>Discover Places</ion-label>
+              </ion-item>
+            </ion-menu-toggle>
+            
+            <ion-menu-toggle>
+              <ion-item line="none" routerLink="/bookings">
+                <ion-icon name="checkbox-outline" slot="start"></ion-icon>
+                <ion-label>Your Bookings</ion-label>
+              </ion-item>
+            </ion-menu-toggle>
+
+            <ion-menu-toggle>
+              <ion-item line="none" (click)="onLogout()" button>
+                  <ion-icon name="exit" slot="start"></ion-icon>
+                  <ion-label>Logout</ion-label>
+                </ion-item>
+            </ion-menu-toggle>
+    
+>>>>>>> week10
           </ion-list>
         </ion-content>
       </ion-menu>
